@@ -19,6 +19,8 @@ namespace CustomerAPI.Controllers
         [Route("customer/{id}")]
         public IActionResult Get(int id)
         {
+            // No security for simplicity of demonstration. Should
+            // check for access rights to each resource.
             var customer = _customerService.GetCustomerById(id);
             return Ok(customer);
         }
