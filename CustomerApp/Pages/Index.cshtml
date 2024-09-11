@@ -1,0 +1,37 @@
+﻿@page
+@using CustomerAPI.Models
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    IEnumerable<Customer> customers = (IEnumerable<Customer>)ViewData["Customers"];
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (Customer customer in customers)
+            {
+                <tr>
+                    <td>@customer.Id</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Email</td>
+                    <td>
+                        <a class="btn btn-primary" asp-page="/Customer" asp-route-id="@customer.Id">View</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
